@@ -37,14 +37,24 @@ function Taskbar() {
   return (
     <div className="fixed bottom-0 left-0 w-full h-12 bg-blue-900 flex">
       {/* Start Menu Section */}
-      <div className="flex items-center pl-2 pr-4 rounded-r-lg z-20" style={{ backgroundColor: "#3E9541" }}>
-        {/* Windows Icon (placeholder for now) */}
-        <div className='max-w-[32px] max-h-[32px] mr-2'><img src={windowsicon}></img></div>
-        <span className="text-white font-bold mr-4">Start</span>
-      </div>
+      <div 
+  className="flex items-center pl-2 pr-4" 
+  style={{
+    padding: '5px 25px 5px 15px',
+    fontFamily: 'Tahoma, sans-serif',
+    borderRadius: '0px 10px 15px 0px',
+    boxShadow: '0px 5px 10px #79ce71 inset',
+    background: 'radial-gradient(circle, #5eac56 0%, #3c873c 100%) center/cover no-repeat'
+  }}
+>
+  <div className='max-w-[30px] mr-2'><img src={windowsicon}></img></div>
+  <span className='text-xl text-white italic font-semibold'>Start</span>
+</div>
 
       {/* Middle Section */}
-      <div className="flex-grow flex items-center pl-4 ml-[-4px]" style={{ backgroundColor: "#1E5BDF" }}>
+      <div className="flex-grow flex items-center pl-4 ml-[-4px]" style={{
+    background: 'linear-gradient(to bottom, #245edb 0%, #3f8cf3 9%, #245edb 18%, #245edb 92%, #333 100%) center/cover no-repeat'
+  }}>
         {/* Internet Explorer Icon */}
         <div className='mr-2'><img src={expicon}></img></div>
         {/* Notes Icon */}
