@@ -4,7 +4,7 @@ import turnOffIcon from "../images/turnofficon.png";
 import restartIcon from "../images/restarticon.png";
 
 
-const TurnOff = () => {
+const TurnOff = ({setIsRestartHovered, setIsDesaturated}) => {
     return ( 
         <div 
         className="turn-off-box  text-white w-96"
@@ -38,7 +38,15 @@ const TurnOff = () => {
           <button className="pb-1 rounded">Turn off</button>
         </div>
         <div className="text-center pt-7">
-          <img src={restartIcon} alt="Restart" className="w-12 h-12 mx-auto cursor-pointer" />
+          <img src={restartIcon} alt="Restart" className="w-12 h-12 mx-auto cursor-pointer" 
+         onMouseEnter={() => {
+          setIsRestartHovered(true);
+          setIsDesaturated(true);
+        }} 
+        onMouseLeave={() => {
+          setIsRestartHovered(false);
+          setIsDesaturated(false);
+        }}/>
           <button className="pb-1 rounded">Restart</button>
         </div>
       </div>

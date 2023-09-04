@@ -47,7 +47,7 @@ function Taskbar() {
     background: 'radial-gradient(circle, #5eac56 0%, #3c873c 100%) center/cover no-repeat'
   }}
 >
-  <div className='max-w-[30px] mr-2'><img src={windowsicon}></img></div>
+  <div className='max-w-[30px] mr-2'><img src={windowsicon} alt="windows icon"></img></div>
   <span className='text-xl text-white italic font-semibold'>Start</span>
 </div>
 
@@ -56,15 +56,15 @@ function Taskbar() {
     background: 'linear-gradient(to bottom, #245edb 0%, #3f8cf3 9%, #245edb 18%, #245edb 92%, #333 100%) center/cover no-repeat'
   }}>
         {/* Internet Explorer Icon */}
-        <div className='mr-2'><img src={expicon}></img></div>
+        <div className='mr-2'><img src={expicon} alt="internet icon"></img></div>
         {/* Notes Icon */}
-        <div><img src={notesblockicon}></img></div>
+        <div><img src={notesblockicon} alt="Notes block icon"></img></div>
       </div>
 
       {/* Right Side Section */}
       <div className="flex items-center pr-4 pl-2" style={{ backgroundColor: "#0592ED" }}>
         {/* Speaker Icon */}
-        <div className='max-w-[30px] max-h-[30px]'><img src={xpspeaker}></img></div>
+        <div className='max-w-[30px] max-h-[30px]'><img src={xpspeaker} alt="speaker icon"></img></div>
         {/* Timestamp (placeholder for now) */}
         <span className="text-white">{time}</span>
       </div>
