@@ -17,6 +17,10 @@ import {motion} from "framer-motion"
 function App() {
   const [isRestartHovered, setIsRestartHovered] = useState(false);
   const [isDesaturated, setIsDesaturated] = useState(false);
+  const [showDesktopIcons, setShowDesktopIcons] = useState(true);
+  const [showTurnOffBox, setShowTurnOffBox] = useState(true);
+  const [showTaskBar, setShowTaskBar] = useState(true);
+  const [showBlissImage, setShowBlissImage] = useState(true);
 
 
   return (
@@ -41,14 +45,22 @@ function App() {
     )}
 
     {/* TurnOff Box (taken out of the main content and given higher z-index) */}
+    {showTurnOffBox && (
     <div style={{ position: 'relative', zIndex: 3 }}>
       <TurnOff 
         setIsRestartHovered={setIsRestartHovered} 
         setIsDesaturated={setIsDesaturated}
+        setShowDesktopIcons={setShowDesktopIcons}
+        setShowTurnOffBox={setShowTurnOffBox}
+        setShowTaskBar={setShowTaskBar}
+        setShowBlissImage={setShowBlissImage}
       />
     </div>
+    )}
 
       {/* Main Content */}
+      {showBlissImage && (
+        
       <motion.div 
   className={`h-screen w-screen ${isDesaturated ? 'desaturate' : ''}`} 
   style={{ backgroundImage: `url(${blissImage})` }}
@@ -57,21 +69,28 @@ function App() {
   transition={{ duration: 3 }}
 >
         {/* Desktop Icons */}
-        <div className="desktop-icons absolute top-0 left-0 flex flex-col space-y-4 p-4">
-        <DesktopIcon iconPath={notesblockicon} iconName="Notesblock" />
-        <DesktopIcon iconPath={expicon} iconName="My Documents" />
-        <DesktopIcon iconPath={cmdicon} iconName="Cmd" />
-        <DesktopIcon iconPath={defragmenticon} iconName="Defrag drive" />
-        <DesktopIcon iconPath={keyboardicon} iconName="Keyboard" />
-        <DesktopIcon iconPath={mouseicon} iconName="Mouse settings" />
-        <DesktopIcon iconPath={thispcicon} iconName="This PC" />
-        <DesktopIcon iconPath={trashicon} iconName="Recycle bin" />
-        </div>
+        {showDesktopIcons && (
+          <div className="desktop-icons absolute top-0 left-0 flex flex-col space-y-4 p-4">
+          <DesktopIcon iconPath={notesblockicon} iconName="Notesblock" />
+          <DesktopIcon iconPath={expicon} iconName="My Documents" />
+          <DesktopIcon iconPath={cmdicon} iconName="Cmd" />
+          <DesktopIcon iconPath={defragmenticon} iconName="Defrag drive" />
+          <DesktopIcon iconPath={keyboardicon} iconName="Keyboard" />
+          <DesktopIcon iconPath={mouseicon} iconName="Mouse settings" />
+          <DesktopIcon iconPath={thispcicon} iconName="This PC" />
+          <DesktopIcon iconPath={trashicon} iconName="Recycle bin" />
+          </div>
+        )}
+        
 
         {/* Taskbar */}
-        <Taskbar />
-
+        {showTaskBar && (
+        
+          <Taskbar />
+        )}
       </motion.div>
+      )
+      }
     </div>
   );
 }
