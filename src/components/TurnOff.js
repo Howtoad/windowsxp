@@ -4,7 +4,8 @@ import turnOffIcon from "../images/turnofficon.png";
 import restartIcon from "../images/restarticon.png";
 
 
-const TurnOff = ({setIsRestartHovered, setIsDesaturated, setShowDesktopIcons, setShowTurnOffBox, setShowTaskBar, setShowBlissImage}) => {
+const TurnOff = ({setIsRestartHovered, setIsDesaturated, setShowDesktopIcons, 
+                  setShowTurnOffBox, setShowTaskBar, setShowBlissImage, setShowRestartScreen}) => {
   const handleRestartSequence = () => {
     setShowDesktopIcons(false);
 
@@ -14,7 +15,11 @@ const TurnOff = ({setIsRestartHovered, setIsDesaturated, setShowDesktopIcons, se
 
     setTimeout(() => {
       setShowTaskBar(false);
+    }, 700);
+
+    setTimeout(() => {
       setShowBlissImage(false);
+      setShowRestartScreen(true);
     }, 1500);
   };
     return ( 
@@ -59,7 +64,11 @@ const TurnOff = ({setIsRestartHovered, setIsDesaturated, setShowDesktopIcons, se
           setIsRestartHovered(false);
           setIsDesaturated(false);
         }}
-        onClick={handleRestartSequence}
+        onClick={() => {
+          handleRestartSequence();
+          setIsDesaturated(false);
+          setIsRestartHovered(false);
+        }}
         />
         
           <button className="pb-1 rounded">Restart</button>

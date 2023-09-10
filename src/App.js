@@ -13,6 +13,7 @@ import mouseicon from './images/mouseicon.png';
 import thispcicon from './images/thispcicon.png';
 import trashicon from './images/trashicon.png';
 import {motion} from "framer-motion"
+import RestartScreen from './components/RestartScreen';
 
 function App() {
   const [isRestartHovered, setIsRestartHovered] = useState(false);
@@ -21,6 +22,7 @@ function App() {
   const [showTurnOffBox, setShowTurnOffBox] = useState(true);
   const [showTaskBar, setShowTaskBar] = useState(true);
   const [showBlissImage, setShowBlissImage] = useState(true);
+  const [showRestartScreen, setShowRestartScreen] = useState(false);
 
 
   return (
@@ -54,20 +56,25 @@ function App() {
         setShowTurnOffBox={setShowTurnOffBox}
         setShowTaskBar={setShowTaskBar}
         setShowBlissImage={setShowBlissImage}
+        setShowRestartScreen={setShowRestartScreen}
       />
     </div>
     )}
+    {showRestartScreen && (
+    <RestartScreen />
+    )  
+    }
 
       {/* Main Content */}
       {showBlissImage && (
         
-      <motion.div 
-  className={`h-screen w-screen ${isDesaturated ? 'desaturate' : ''}`} 
-  style={{ backgroundImage: `url(${blissImage})` }}
-  initial={{ filter: "grayscale(0%)" }}
-  animate={{ filter: isDesaturated ? "grayscale(50%)" : "grayscale(0%)" }}
-  transition={{ duration: 3 }}
->
+        <motion.div 
+        className={`h-screen w-screen ${isDesaturated ? 'desaturate' : ''}`} 
+        style={{ backgroundImage: `url(${blissImage})` }}
+        initial={{ filter: "grayscale(0%)" }}
+        animate={{ filter: isDesaturated ? "grayscale(50%)" : "grayscale(0%)" }}
+        transition={{ duration: isDesaturated ? 3 : 0 }}
+      >
         {/* Desktop Icons */}
         {showDesktopIcons && (
           <div className="desktop-icons absolute top-0 left-0 flex flex-col space-y-4 p-4">
